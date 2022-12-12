@@ -10,11 +10,12 @@ const config = {
 
 // Preparing Object conte to submit
 const downloadData = {
-    Bucket: process.env.TUTORIAL_BUCKET,
+    Bucket: 'tmkttesteaudios',
     Key: 'photo.jpg'
 };
 
 async function stream2buffer(stream) {
+    
     return new Promise((resolve, reject) => {
         const _buf = [];
         stream.on("data", (chunk) => _buf.push(chunk));

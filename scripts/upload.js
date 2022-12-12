@@ -11,7 +11,7 @@ const config = {
 // Preparing Object conte to submit
 const file = readFileSync('files/natural-wonders-1400924.jpg');
 const putData = {
-    Bucket: process.env.TUTORIAL_BUCKET,
+    Bucket: 'tmkttesteaudios',
     Key: 'photo.jpg',
     StorageClass: 'STANDARD',
     Body: file

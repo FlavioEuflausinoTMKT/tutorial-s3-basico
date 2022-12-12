@@ -9,7 +9,7 @@ const config = {
 
 // Preparing Object conte to submit
 const deleteData = {
-    Bucket: process.env.TUTORIAL_BUCKET,
+    Bucket: 'tmkttesteaudios',
     Key: 'photo.jpg'
 };
 

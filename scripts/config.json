@@ -1,6 +1,3 @@
 {
-  "region": "us-east-1",
-  "credentials": {
-    "profile": "tutorials3"
-  }
+  "region": "us-east-1"
 }
