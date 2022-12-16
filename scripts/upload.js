@@ -8,11 +8,14 @@ const config = {
     credentials: fromIni({profile: 'tutorials3'})
 };
 
+
+
+export async function uploadArchive(path,nome) {
 // Preparing Object conte to submit
-const file = readFileSync('files/natural-wonders-1400924.jpg');
+const file = readFileSync(path);
 const putData = {
     Bucket: 'tmkttesteaudios',
-    Key: 'photo.jpg',
+    Key: nome+'.jpg',
     StorageClass: 'STANDARD',
     Body: file
 };
@@ -20,4 +23,5 @@ const putData = {
 const s3Client = new S3Client(config);
 const response = await s3Client.send(new PutObjectCommand(putData));
 
-console.log('response: ', response);
+return response;
+}

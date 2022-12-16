@@ -9,10 +9,7 @@ const config = {
 };
 
 // Preparing Object conte to submit
-const downloadData = {
-    Bucket: 'tmkttesteaudios',
-    Key: 'photo.jpg'
-};
+
 
 async function stream2buffer(stream) {
     
@@ -24,9 +21,20 @@ async function stream2buffer(stream) {
     });
 }
 
-const s3Client = new S3Client(config);
-const response = await s3Client.send(new GetObjectCommand(downloadData));
 
-writeFileSync('downloads/photo.jpg', await stream2buffer(response.Body));
+export async function downloadArchive(file) {
 
-console.log('Arquivo salvo em downloads/photo.jpg');
+    const s3Client = new S3Client(config);
+    const downloadData = {
+        Bucket: 'tmkttesteaudios',
+        Key: file+'.jpg'
+    };
+    const response = await s3Client.send(new GetObjectCommand(downloadData));
+
+    writeFileSync('C:/Users/883914/Downloads/'+file+'.jpg', await stream2buffer(response.Body));
+
+    console.log('Arquivo salvo em downloads/'+file+'.jpg');
+
+    
+    return response;
+}

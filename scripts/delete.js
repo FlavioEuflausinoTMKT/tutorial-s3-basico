@@ -8,12 +8,21 @@ const config = {
 };
 
 // Preparing Object conte to submit
-const deleteData = {
-    Bucket: 'tmkttesteaudios',
-    Key: 'photo.jpg'
-};
 
-const s3Client = new S3Client(config);
-const response = await s3Client.send(new DeleteObjectCommand(deleteData));
 
-console.log('response: ', response);
+
+export async function deleteArchive(file) {
+
+    const deleteData = {
+        Bucket: 'tmkttesteaudios',
+        Key: file+'.jpg'
+    };
+    const s3Client = new S3Client(config);
+    const response = await s3Client.send(new DeleteObjectCommand(deleteData));
+
+
+    
+    return response;
+
+
+}
